@@ -1,9 +1,13 @@
-/* global it, expect */
+/* global it, expect, jest */
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App.jsx';
+import { App } from './App.jsx';
+import { initialState } from './reducers/';
 
 it('App renders without crashing', () => {
-  const component = shallow(<App />);
+  const mockFunction = jest.fn();
+
+  const component = shallow(<App state={initialState} submitTodo={mockFunction} />);
+
   expect(component.exists()).toEqual(true);
 });
