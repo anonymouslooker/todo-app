@@ -1,0 +1,39 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const AddTodo = ({ submitTodo }) => {
+  let input;
+  return (
+    <div>
+      <form
+        onSubmit={($event) => {
+          $event.preventDefault();
+          submitTodo(input.value);
+        }}
+      >
+        <input
+          className="todo-input"
+          ref={($element) => {
+            input = $element;
+          }}
+        />
+        <button
+          className="todo-submit"
+          type="submit"
+          onClick={($event) => {
+            $event.preventDefault();
+            submitTodo(input.value);
+          }}
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  );
+};
+
+AddTodo.propTypes = {
+  submitTodo: PropTypes.func.isRequired,
+};
+
+export default AddTodo;
